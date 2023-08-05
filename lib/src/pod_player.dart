@@ -51,6 +51,8 @@ class PodVideoPlayer extends StatefulWidget {
   /// and [SystemUiMode] is up to you.
   final Future<void> Function(bool isFullScreen)? onToggleFullScreen;
 
+  final Future<void> Function(PodVideoState state)? onTogglePlayPause;
+
   /// Sets a custom loading widget.
   /// If no widget is informed, a default [CircularProgressIndicator] will be shown.
   final WidgetBuilder? onLoading;
@@ -72,6 +74,7 @@ class PodVideoPlayer extends StatefulWidget {
     this.videoThumbnail,
     this.onToggleFullScreen,
     this.onLoading,
+    this.onTogglePlayPause,
   }) {
     addToUiController();
   }
@@ -90,7 +93,8 @@ class PodVideoPlayer extends StatefulWidget {
       ..videoTitle = videoTitle
       ..onToggleFullScreen = onToggleFullScreen
       ..onLoading = onLoading
-      ..videoThumbnail = videoThumbnail;
+      ..videoThumbnail = videoThumbnail
+      ..onTogglePlayPause = onTogglePlayPause;
   }
 
   @override

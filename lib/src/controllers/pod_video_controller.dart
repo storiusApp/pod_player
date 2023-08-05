@@ -94,9 +94,11 @@ class _PodVideoController extends _PodUiController {
   ///toogle play pause
   void togglePlayPauseVideo() {
     isvideoPlaying = !isvideoPlaying;
+    //callback function.
     podVideoStateChanger(
       isvideoPlaying ? PodVideoState.playing : PodVideoState.paused,
     );
+    onTogglePlayPause?.call(_podVideoState);
   }
 
   ///toogle video player controls

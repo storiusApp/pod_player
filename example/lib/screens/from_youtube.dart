@@ -39,6 +39,12 @@ class _PlayVideoFromVimeoIdState extends State<PlayVideoFromYoutube> {
             shrinkWrap: true,
             children: [
               PodVideoPlayer(
+                onTogglePlayPause: (state) async {
+                  print('=== ${state}');
+                },
+                onToggleFullScreen: (s) async {
+
+                },
                 controller: controller,
                 videoThumbnail: const DecorationImage(
                   image: NetworkImage(

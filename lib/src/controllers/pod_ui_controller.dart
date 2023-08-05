@@ -9,6 +9,7 @@ class _PodUiController extends _PodBaseController {
 
   /// Callback when fullscreen mode changes
   Future<void> Function(bool isFullScreen)? onToggleFullScreen;
+  Future<void> Function(PodVideoState state)? onTogglePlayPause;
 
   /// Builder for custom loading widget
   WidgetBuilder? onLoading;
