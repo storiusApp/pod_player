@@ -134,9 +134,9 @@ class _PodVideoPlayerState extends State<PodVideoPlayer>
     } else {
       _podCtr.wasVideoPlayingOnUiDispose = false;
     }
-    _podCtr
-      ..isVideoUiBinded = false
-      ..podVideoStateChanger(PodVideoState.paused, updateUi: false);
+    // _podCtr
+    //   ..isVideoUiBinded = false
+    //   ..podVideoStateChanger(PodVideoState.paused, updateUi: false);
     if (kIsWeb) {
       _podCtr.keyboardFocusWeb?.removeListener(_podCtr.keyboadListner);
     }
