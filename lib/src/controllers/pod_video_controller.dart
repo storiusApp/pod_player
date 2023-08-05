@@ -159,7 +159,7 @@ class _PodVideoController extends _PodUiController {
     update(['update-all']);
   }
 
-  Future<void> enableFullScreen(String tag) async {
+  Future<void> enableFullScreen(String tag, BuildContext context) async {
     podLog('-full-screen-enable-entred');
     if (!isFullScreen) {
       if (onToggleFullScreen != null) {
@@ -176,7 +176,7 @@ class _PodVideoController extends _PodUiController {
         ]);
       }
 
-      _enableFullScreenView(tag);
+      _enableFullScreenView(tag, context);
       isFullScreen = true;
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         update(['full-screen']);
@@ -220,12 +220,12 @@ class _PodVideoController extends _PodUiController {
     Navigator.of(fullScreenContext).pop();
   }
 
-  void _enableFullScreenView(String tag) {
+  void _enableFullScreenView(String tag, BuildContext context) {
     if (!isFullScreen) {
       podLog('full-screen-enabled');
 
       Navigator.push(
-        mainContext,
+        context,
         PageRouteBuilder<dynamic>(
           fullscreenDialog: true,
           pageBuilder: (BuildContext context, _, __) => FullScreenView(
