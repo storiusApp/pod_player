@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:youtube_explode_dart/youtube_explode_dart.dart';
+
 import '../models/vimeo_models.dart';
 
 String podErrorString(String val) {
@@ -148,6 +149,55 @@ class VideoApis {
         );
       }
       debugPrint('===== YOUTUBE API ERROR: $error ==========');
+      rethrow;
+    }
+  }
+
+  static Future<List<VideoQalityUrls>?> getBilibiliVideoQualityUrls(
+    String bilibiliId,
+  ) async {
+    try {
+      final response = await http.get(
+        Uri.parse(
+          'https://api.bilibili.com/x/web-interface/view?bvid=$bilibiliId',
+        ),
+      );
+      final jsonData =
+          jsonDecode(response.body)['data'] as Map<String, dynamic>;
+      final bvId = jsonData['bvid'];
+      final aId = jsonData['aid'];
+      final cId = jsonData['cid'];
+      final responseUrl = await http.get(
+        Uri.parse(
+          'https://api.bilibili.com/x/player/playurl?aid=$aId&bvid=$bvId&cid=$cId',
+        ),
+      );
+
+      final jsonUrlData =
+          jsonDecode(responseUrl.body)['data'] as Map<String, dynamic>;
+
+      final List<VideoQalityUrls> list = [];
+      // (jsonUrlData['durl'] as List<Map, String>).first['url']
+      final  urls = jsonUrlData['durl'] as List<dynamic>;
+      if(urls.isNotEmpty) {
+        list.add(
+          VideoQalityUrls(
+            quality: jsonUrlData['quality'] as int,
+            url: urls.first['url'] as String,
+          ),
+        );
+      }
+
+      return list;
+    } catch (error) {
+      if (error.toString().contains('XMLHttpRequest')) {
+        log(
+          podErrorString(
+            '(INFO) To play Bilibili video in WEB, Please enable CORS in your browser',
+          ),
+        );
+      }
+      debugPrint('===== Bilibili API ERROR: $error ==========');
       rethrow;
     }
   }

@@ -1,4 +1,5 @@
 import 'package:example/screens/from_asset.dart';
+import 'package:example/screens/from_bilibili.dart';
 import 'package:example/screens/from_network.dart';
 import 'package:example/screens/from_network_urls.dart';
 import 'package:example/screens/from_vimeo_private_id.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         '/fromVimeoId': (context) => const PlayVideoFromVimeoId(),
         '/fromVimeoPrivateId': (context) => const PlayVideoFromVimeoPrivateId(),
         '/fromYoutube': (context) => const PlayVideoFromYoutube(),
+        '/fromBilibili': (context) => const PlayVideoFromBilibili(),
         '/fromAsset': (context) => const PlayVideoFromAsset(),
         '/fromNetwork': (context) => const PlayVideoFromNetwork(),
         '/fromNetworkQualityUrls': (context) =>
@@ -81,6 +83,10 @@ class _MainPageState extends State<MainPage> {
             _button(
               'Custom Video player',
               onPressed: () => Navigator.of(context).pushNamed('/customVideo'),
+            ),
+            _button(
+              'Play video from Bilibili',
+              onPressed: () => Navigator.of(context).pushNamed('/fromBilibili'),
             ),
           ],
         ),

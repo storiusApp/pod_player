@@ -13,9 +13,13 @@ import '../utils/logger.dart';
 import '../utils/video_apis.dart';
 
 part 'pod_base_controller.dart';
+
 part 'pod_gestures_controller.dart';
+
 part 'pod_ui_controller.dart';
+
 part 'pod_video_controller.dart';
+
 part 'pod_video_quality_controller.dart';
 
 class PodGetXVideoController extends _PodGesturesController {
@@ -39,6 +43,7 @@ class PodGetXVideoController extends _PodGesturesController {
   bool controllerInitialized = false;
   late PodPlayerConfig podPlayerConfig;
   late PlayVideoFrom playVideoFrom;
+
   void config({
     required PlayVideoFrom playVideoFrom,
     required PodPlayerConfig playerConfig,
@@ -195,6 +200,23 @@ class PodGetXVideoController extends _PodGesturesController {
           httpHeaders: playVideoFrom.httpHeaders,
         );
         playingVideoUrl = url;
+
+        break;
+      case PodVideoPlayerType.bilibili:
+        final urls = await getVideoQualityUrlsFromBilibili(
+          playVideoFrom.dataSource!.split('/').last,
+        );
+        if (urls.isNotEmpty) {
+          ///
+          _videoCtr = VideoPlayerController.networkUrl(
+            Uri.parse(urls.first.url),
+            closedCaptionFile: playVideoFrom.closedCaptionFile,
+            formatHint: playVideoFrom.formatHint,
+            videoPlayerOptions: playVideoFrom.videoPlayerOptions,
+            httpHeaders: playVideoFrom.httpHeaders,
+          );
+          playingVideoUrl = urls.first.url;
+        }
 
         break;
     }

@@ -139,4 +139,13 @@ class _PodVideoQualityController extends _PodVideoController {
       update(['update-all']);
     }
   }
+
+
+
+  Future<List<VideoQalityUrls>> getVideoQualityUrlsFromBilibili(
+      String bilibiliId,
+      ) async {
+    return await VideoApis.getBilibiliVideoQualityUrls(bilibiliId) ??
+        [];
+  }
 }

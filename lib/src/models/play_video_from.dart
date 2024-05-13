@@ -145,4 +145,23 @@ class PlayVideoFrom {
       httpHeaders: httpHeaders,
     );
   }
+
+  factory PlayVideoFrom.bilibili(
+      String dataSource, {
+        bool live = false,
+        VideoFormat? formatHint,
+        Future<ClosedCaptionFile>? closedCaptionFile,
+        VideoPlayerOptions? videoPlayerOptions,
+        Map<String, String> httpHeaders = const {},
+      }) {
+    return PlayVideoFrom._(
+      live: live,
+      playerType: PodVideoPlayerType.bilibili,
+      dataSource: dataSource,
+      formatHint: formatHint,
+      closedCaptionFile: closedCaptionFile,
+      videoPlayerOptions: videoPlayerOptions,
+      httpHeaders: httpHeaders,
+    );
+  }
 }
