@@ -178,7 +178,7 @@ class _PodVideoController extends _PodUiController {
         ]);
       }
 
-      _enableFullScreenView(tag, context);
+      // _enableFullScreenView(tag, context);
       isFullScreen = true;
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         update(['full-screen']);
@@ -212,7 +212,7 @@ class _PodVideoController extends _PodUiController {
         ]);
       }
 
-      if (enablePop) _exitFullScreenView(context, tag);
+      // if (enablePop) _exitFullScreenView(context, tag);
       isFullScreen = false;
       update(['full-screen']);
       update(['update-all']);
