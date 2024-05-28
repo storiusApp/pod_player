@@ -13,8 +13,9 @@ class _PlayVideoFromVimeoIdState extends State<PlayVideoFromBilibili> {
   final videoTextFieldCtr = TextEditingController();
   @override
   void initState() {
+//https://bilibili.com/video/BV1B8411F7Dg
     controller = PodPlayerController(
-      playVideoFrom: PlayVideoFrom.bilibili('BV1924y1873s'),
+      playVideoFrom: PlayVideoFrom.bilibili('BV19U411d7pQ'),
       podPlayerConfig: const PodPlayerConfig(
         videoQualityPriority: [360],
         autoPlay: true,

@@ -203,8 +203,9 @@ class PodGetXVideoController extends _PodGesturesController {
 
         break;
       case PodVideoPlayerType.bilibili:
+        final Uri uri = Uri.parse(playVideoFrom.dataSource!);
         final urls = await getVideoQualityUrlsFromBilibili(
-          playVideoFrom.dataSource!.split('/').last,
+          uri.path.split('/').last,
         );
         if (urls.isNotEmpty) {
           ///
