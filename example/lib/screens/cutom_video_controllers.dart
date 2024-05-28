@@ -106,6 +106,7 @@ class _CustomVideoControllsState extends State<CustomVideoControlls> {
             children: [
               sizeH20,
               PodVideoPlayer(
+                rootCtx: context,
                 alwaysShowProgressBar: alwaysShowProgressBar,
                 controller: controller,
                 matchFrameAspectRatioToVideo: true,

@@ -46,6 +46,7 @@ class _PlayVideoFromAssetState extends State<PlayVideoFromNetworkQualityUrls> {
       body: SafeArea(
         child: Center(
           child: PodVideoPlayer(
+            rootCtx: context,
             controller: controller,
             podProgressBarConfig: const PodProgressBarConfig(
               padding: kIsWeb

@@ -39,6 +39,7 @@ class _PlayVideoFromVimeoIdState extends State<PlayVideoFromBilibili> {
             shrinkWrap: true,
             children: [
               PodVideoPlayer(
+                rootCtx: context,
                 onTogglePlayPause: (state) async {
                   print('=== ${state}');
                 },

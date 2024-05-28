@@ -57,9 +57,12 @@ class PodVideoPlayer extends StatefulWidget {
   /// If no widget is informed, a default [CircularProgressIndicator] will be shown.
   final WidgetBuilder? onLoading;
 
+  final BuildContext rootCtx;
+
+
   PodVideoPlayer({
     required this.controller,
-    super.key,
+    required this.rootCtx, super.key,
     this.frameAspectRatio = 16 / 9,
     this.videoAspectRatio = 16 / 9,
     this.alwaysShowProgressBar = true,
@@ -257,6 +260,7 @@ class _PodVideoPlayerState extends State<PodVideoPlayer>
         builder: (podCtr) {
           if (podCtr.isFullScreen) return _thumbnailAndLoadingWidget();
           return _PodCoreVideoPlayer(
+            rootCtx: widget.rootCtx,
             videoPlayerCtr: podCtr.videoCtr!,
             videoAspectRatio: videoAspectRatio,
             tag: widget.controller.getTag,
@@ -265,6 +269,7 @@ class _PodVideoPlayerState extends State<PodVideoPlayer>
       );
     } else {
       return _PodCoreVideoPlayer(
+        rootCtx: widget.rootCtx,
         videoPlayerCtr: _podCtr.videoCtr!,
         videoAspectRatio: videoAspectRatio,
         tag: widget.controller.getTag,

@@ -36,7 +36,7 @@ class _PlayVideoFromVimeoIdState extends State<PlayVideoFromVimeoId> {
           child: ListView(
             shrinkWrap: true,
             children: [
-              PodVideoPlayer(controller: controller),
+              PodVideoPlayer(rootCtx: context, controller: controller),
               const SizedBox(height: 40),
               _loadVideoFromUrl()
             ],

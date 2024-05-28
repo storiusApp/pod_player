@@ -39,6 +39,7 @@ class _PlayVideoFromAssetState extends State<PlayVideoFromNetwork> {
             shrinkWrap: true,
             children: [
               PodVideoPlayer(
+                rootCtx: context,
                 controller: controller,
                 podProgressBarConfig: const PodProgressBarConfig(
                   padding: kIsWeb

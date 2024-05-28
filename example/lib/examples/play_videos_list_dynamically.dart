@@ -110,6 +110,7 @@ class VideoViewerState extends State<VideoViewer> {
           }
         },
         child: PodVideoPlayer(
+            rootCtx: context,
             controller: widget.controller,
             alwaysShowProgressBar: true,
             overlayBuilder: (options) {

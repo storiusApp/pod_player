@@ -2,9 +2,11 @@ part of 'package:pod_player/src/pod_player.dart';
 
 class _MobileOverlay extends StatelessWidget {
   final String tag;
+  final BuildContext rootCtx;
 
   const _MobileOverlay({
     required this.tag,
+    required this.rootCtx,
   });
 
   @override
@@ -66,7 +68,7 @@ class _MobileOverlay extends StatelessWidget {
                 color: itemColor,
                 onPressed: () {
                   if (podCtr.isOverlayVisible) {
-                    _bottomSheet(context);
+                    _bottomSheet(rootCtx);
                   } else {
                     podCtr.toggleVideoOverlay();
                   }
