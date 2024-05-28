@@ -3,10 +3,12 @@ part of 'package:pod_player/src/pod_player.dart';
 class _VideoOverlays extends StatelessWidget {
   final String tag;
   final BuildContext rootCtx;
+  final bool isHideMoreButton;
 
   const _VideoOverlays({
     required this.tag,
     required this.rootCtx,
+    this.isHideMoreButton = false,
   });
 
   @override
@@ -54,7 +56,12 @@ class _VideoOverlays extends StatelessWidget {
             child: Stack(
               fit: StackFit.passthrough,
               children: [
-                if (!kIsWeb) _MobileOverlay(tag: tag, rootCtx: rootCtx,),
+                if (!kIsWeb)
+                  _MobileOverlay(
+                    tag: tag,
+                    rootCtx: rootCtx,
+                    isHideMoreButton: isHideMoreButton,
+                  ),
                 if (kIsWeb) _WebOverlay(tag: tag),
               ],
             ),

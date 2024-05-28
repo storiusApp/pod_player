@@ -3,10 +3,12 @@ part of 'package:pod_player/src/pod_player.dart';
 class _MobileOverlay extends StatelessWidget {
   final String tag;
   final BuildContext rootCtx;
+  final bool isHideMoreButton;
 
   const _MobileOverlay({
     required this.tag,
     required this.rootCtx,
+    this.isHideMoreButton = false,
   });
 
   @override
@@ -63,6 +65,7 @@ class _MobileOverlay extends StatelessWidget {
                   child: podCtr.videoTitle ?? const SizedBox(),
                 ),
               ),
+              if(isHideMoreButton == false)
               MaterialIconButton(
                 toolTipMesg: podCtr.podPlayerLabels.settings,
                 color: itemColor,

@@ -59,10 +59,12 @@ class PodVideoPlayer extends StatefulWidget {
 
   final BuildContext rootCtx;
 
+  final bool isHideMoreButton;
 
   PodVideoPlayer({
     required this.controller,
-    required this.rootCtx, super.key,
+    required this.rootCtx,
+    super.key,
     this.frameAspectRatio = 16 / 9,
     this.videoAspectRatio = 16 / 9,
     this.alwaysShowProgressBar = true,
@@ -78,6 +80,7 @@ class PodVideoPlayer extends StatefulWidget {
     this.onToggleFullScreen,
     this.onLoading,
     this.onTogglePlayPause,
+    this.isHideMoreButton = false,
   }) {
     addToUiController();
   }
@@ -264,6 +267,7 @@ class _PodVideoPlayerState extends State<PodVideoPlayer>
             videoPlayerCtr: podCtr.videoCtr!,
             videoAspectRatio: videoAspectRatio,
             tag: widget.controller.getTag,
+            isHideMoreButton: widget.isHideMoreButton,
           );
         },
       );
@@ -273,6 +277,7 @@ class _PodVideoPlayerState extends State<PodVideoPlayer>
         videoPlayerCtr: _podCtr.videoCtr!,
         videoAspectRatio: videoAspectRatio,
         tag: widget.controller.getTag,
+        isHideMoreButton: widget.isHideMoreButton,
       );
     }
   }
